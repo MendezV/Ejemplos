@@ -6,24 +6,19 @@ int main(int argc, char **argv){
   float *matrix_B;
   float *matrix_C;
   int n_rowA, n_colsA;
-  int n_rowB, n_colsB;
   int i, j,k;
 
   matrix_A = load_matrix(argv[1], &n_rowA, &n_colsA);
-  matrix_B = load_matrix(argv[2], &n_rowB, &n_colsB);
-  matrix_C = malloc(n_rowA * n_colsB * sizeof(float));
+  matrix_C = malloc(n_colsA * n_rowA * sizeof(float));
     
 
 for(i=0;i<n_rowA;i++){
-    for(j=0;j<n_colsB;j++){
-      matrix_C[i*n_colsB + j]=0.0;
-        for(k=0;k<n_colsA;k++){
-             matrix_C[i*n_colsB + j] =matrix_C[i*n_colsB + j]+matrix_A[i*n_colsA + k]*matrix_B[k*n_colsB + j];
+    for(j=0;j<n_colsA;j++){
+      matrix_C[j*n_rowA + i]=matrix_A[i*n_colsA + j];
+      printf(" %f ", matrix_C[j*n_rowA + i]);
+   }
+ printf("\n");
 }
- printf(" %f ", matrix_C[i*n_colsB + j]);
-    }
-    printf("\n");
-  }
 }
 
 float *load_matrix(char *filename, int *n, int *m){

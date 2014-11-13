@@ -9,7 +9,6 @@ int main(int argc, char **argv){
   float *matrix_C;
   float *matrix_e;
   float *matrix_M;
-  float *ident;
   int n_row, n_cols;
   int i, j, k,l,r, n,h;
 
